@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ChecklistItem.h"
 
 @interface ViewController ()
 
@@ -14,63 +15,102 @@
 
 @implementation ViewController
 
+{
+    NSMutableArray * _items;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    _items = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    ChecklistItem * item;
+    
+    item = [[ChecklistItem alloc]init];
+    item.text = @"Walk the dog";
+    item.checked = NO;
+    [_items addObject:item];
+    
+    item = [[ChecklistItem alloc]init];
+    item.text = @"Brush teeth";
+    item.checked = NO;
+    [_items addObject:item];
+    
+    item = [[ChecklistItem alloc]init];
+    item.text = @"Prepare breakfast";
+    item.checked = NO;
+    [_items addObject:item];
+    
+    item = [[ChecklistItem alloc]init];
+    item.text = @"Soccer practice";
+    item.checked = NO;
+    [_items addObject:item];
+    
+    item = [[ChecklistItem alloc]init];
+    item.text = @"Eat ice cream";
+    item.checked = NO;
+    [_items addObject:item];
+    
 }
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
+//data source method no.1 to get the number of rows in section for the table view
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 100;
+    return [_items count];
 
 }
 
+
+//data source mathod no.2 to get the cell to display the row in the given index path
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ChecklistItem"];
     
-    UILabel * label = (UILabel *)[cell viewWithTag:1000];
+    ChecklistItem * item = _items[indexPath.row];
     
-    if (indexPath.row == 0) {
-        
-        label.text = @"Ice-cream";
-        
-    } else if (indexPath.row % 5 == 1) {
-        
-        label.text = @"Pizza";
-        
-    } else if (indexPath.row % 5 == 2) {
-        
-        label.text = @"Burger";
-        
-    } else if (indexPath.row % 5 == 3) {
-        
-        label.text = @"Tacos";
-        
-    } else if (indexPath.row % 5 == 4) {
-        
-        label.text = @"Noodles";
-        
-    }
+    [self configureTextForCell:cell withChecklistItem:item];
+    [self configureCheckmarkForCell:cell withChecklistItem:item];
     
     return cell;
     
 }
 
+- (void)configureTextForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *) item {
+    
+    UILabel * label = (UILabel *)[cell viewWithTag:1000];
+    label.text = item.text;
+}
+
+- (void)configureCheckmarkForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *) item {
+    
+    if (item.checked) {
+        
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+    } else {
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+    }
+}
+
+
+//delegate method to handle taps on rows
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (cell.accessoryType == UITableViewCellAccessoryNone) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    ChecklistItem * item = _items[indexPath.row];
+    
+    [item toggleChecked];
+    
+    [self configureCheckmarkForCell:cell withChecklistItem:item];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
