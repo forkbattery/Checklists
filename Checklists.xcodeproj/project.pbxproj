@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		972640F11A566F43009AC75A /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 972640F01A566F43009AC75A /* AddItemViewController.m */; };
 		97989E021A4C059200DE0F70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97989E011A4C059200DE0F70 /* main.m */; };
 		97989E051A4C059200DE0F70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97989E041A4C059200DE0F70 /* AppDelegate.m */; };
 		97989E081A4C059200DE0F70 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97989E071A4C059200DE0F70 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		972640EF1A566F43009AC75A /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddItemViewController.h; path = ../AddItemViewController.h; sourceTree = "<group>"; };
+		972640F01A566F43009AC75A /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddItemViewController.m; path = ../AddItemViewController.m; sourceTree = "<group>"; };
 		97989DFC1A4C059200DE0F70 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97989E001A4C059200DE0F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97989E011A4C059200DE0F70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				97989E071A4C059200DE0F70 /* ViewController.m */,
 				97BC14901A529C2600E35732 /* ChecklistItem.h */,
 				97BC14911A529C2600E35732 /* ChecklistItem.m */,
+				972640EF1A566F43009AC75A /* AddItemViewController.h */,
+				972640F01A566F43009AC75A /* AddItemViewController.m */,
 				97989E091A4C059200DE0F70 /* Main.storyboard */,
 				97989E0C1A4C059200DE0F70 /* Images.xcassets */,
 				97989E0E1A4C059200DE0F70 /* LaunchScreen.xib */,
@@ -227,6 +232,7 @@
 				97989E081A4C059200DE0F70 /* ViewController.m in Sources */,
 				97989E051A4C059200DE0F70 /* AppDelegate.m in Sources */,
 				97989E021A4C059200DE0F70 /* main.m in Sources */,
+				972640F11A566F43009AC75A /* AddItemViewController.m in Sources */,
 				97BC14921A529C2600E35732 /* ChecklistItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
